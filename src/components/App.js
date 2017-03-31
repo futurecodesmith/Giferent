@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import Login from './Login';
 import CreateAccount from './CreateAccount';
 import Main from './Main';
+import Axios from 'axios';
 import qs from 'qs';
-// import Axios from 'axios';
 
 class App extends Component {
 
@@ -30,14 +30,11 @@ class App extends Component {
   //login//
   clickLoginButton(user, pass) {
     //Axios call
-    $.post('/verifyUser', {
+    Axios.post('/verifyUser', {
       username: user,
       password: pass,
-      // headers: {
-      //   'Content-type': 'application/x-www-form-urlencoded'
-      // }
-    },result => {
-      console.log(result.body);
+    }).then(res => {
+      console.log(res);
     })
 
     //if server response is true:
