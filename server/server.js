@@ -27,10 +27,6 @@ app.get('/', (req, res) => {
 
 app.post('/createUser', userController.createUser);
 
-// app.post('/verifyUser', userController.verifyUser, (req, res) => {
-//     res.send()
-// });
-
 app.post('/verifyUser', userController.verifyUser);
 
 app.post('/createGif', gifController.createGif);

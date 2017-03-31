@@ -7,7 +7,7 @@ const gifSchema = new Schema({
     // sound: { type: Buffer, contentType: String, required: true },
     likeCount: { type: Number, required: true },
     creator: { type: String, required: true },
-    sendURl: { type: String, required: true },
+    sendURL: { type: String, required: true },
 })
 
 module.exports = mongoose.model('gif', gifSchema);
