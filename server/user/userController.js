@@ -10,6 +10,9 @@ const userController = {
             password: req.body.password,
         }, (err, result) => {
             if(err) console.log(err);
+            cookieController.setCookie(req, res, (result) => {
+                console.log('cookie has been set');
+            })
             res.send(result);
         })
     },
