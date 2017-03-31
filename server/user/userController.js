@@ -21,11 +21,15 @@ const userController = {
 
     verifyUser(req, res) {
         user.findOne({username: req.body.username}, (err, result) => {
-            if (!result) {
+            console.log(result)
+            if (result === null) {
+                console.log('IST HIS FLASE')
                 return res.send(false);
             } else {
                 if(result.password === req.body.password) {
                     return res.send(true);
+                } else {
+                    return res.send(false);
                 }
             }
         })

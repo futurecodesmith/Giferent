@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import Login from './Login';
 import CreateAccount from './CreateAccount';
 import Main from './Main';
-import Axios from 'axios';
+import qs from 'qs';
+// import Axios from 'axios';
 
 class App extends Component {
 
@@ -29,15 +30,18 @@ class App extends Component {
   //login//
   clickLoginButton(user, pass) {
     //Axios call
-    Axios.post('/verifyUser', {
+    $.post('/verifyUser', {
       username: user,
-      password: pass
-    }).then(res => {
-      console.log(res);
+      password: pass,
+      // headers: {
+      //   'Content-type': 'application/x-www-form-urlencoded'
+      // }
+    },result => {
+      console.log(result.body);
     })
-    
+
     //if server response is true:
-    //this.setState({page_state: "main", username: user});
+    // this.setState({page_state: "main", username: user});
 
     //if server response is false:
     //set username/password error and force state update for re-render
