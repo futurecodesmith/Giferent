@@ -13,7 +13,7 @@ mongoose.connect('mongodb://localhost/giferent');
 mongoose.connection.once('open', () => console.log('connected to database'))
 
 // app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.text());
+app.use(bodyParser.json());
 app.use(cookieParser());
 
 app.use('/createUser', cookieController.setCookie);
