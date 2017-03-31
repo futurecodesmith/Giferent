@@ -4,8 +4,7 @@ const Schema = mongoose.Schema;
 const userSchema = new Schema({
     username: { type: String, required: true },
     password: { type: String, required: true },
-    cookie: { type: String, required: true },
-    created: { type: Date, required: true },
+    // created: { type: Date, required: true },
 })
 
 module.exports = mongoose.model('user', userSchema);

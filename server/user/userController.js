@@ -4,21 +4,15 @@ const cookieController = require('./../cookieController');
 
 const userController = {
 
-    createUser(req, res) {
+    createUser(req,res) {
         user.create({
             username: req.body.username,
             password: req.body.password,
-            created: req.body.created,
         }, (err, result) => {
-            if (err) throw err;
-            cookieController.setCookie(req, res, (result) => {
-                res.send('cookie has been set');
-            })
-            return res.send('User has been created')
+            if(err) console.log(err);
+            res.send(result);
         })
-
     },
-
     verifyUser(req, res) {
         user.findOne({ username: req.body.username }, (err, result) => {
             if (result === null) {

@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 const inline = {
   "position": "relative",
   "display": "inline-block",
-  "margin-top": "5px"
+  "marginTop": "5px"
 }
 
 class Login extends Component {
