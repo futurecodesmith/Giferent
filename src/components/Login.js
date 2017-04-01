@@ -31,7 +31,7 @@ class Login extends Component {
     return(
       <div className="login_container">
 
-        <p>Login</p>
+        <h4 id="login_text" >LOGIN</h4>
 
         <div id="username_container" className="block">
           <span style={inline}>Username</span>
@@ -43,11 +43,13 @@ class Login extends Component {
           <input type="password" placeholder="Password" style={inline} onChange={this.passwordHandler.bind(this)}/>
         </div>
 
+        {this.props.loginError}
+
         <div id="loginButton_container" className="block">
         <button type="button" id="login_button" onClick={() => {this.clickLoginButton(this.state.username, this.state.password)}}>Login</button>
         </div>
 
-        <button type="button" onClick={this.clickCreateAccountButton}>Create An Account</button>
+        <button type="button" id="login_button" onClick={this.clickCreateAccountButton}>Create An Account</button>
 
       </div>
     )
