@@ -7,6 +7,16 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const cookieController = require('./cookieController');
 const path = require('path');
+const cors = require('cors');
+
+app.use(cors());
+app.use(function(req, res, next) {
+ res.header("Access-Control-Allow-Origin", "*");
+ res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, {'Content-Type': 'json/application'}, Accept");
+ res.setHeader('Access-Control-Allow-Methods', 'OPTIONS, GET');
+ //next handles program flow so req and res are set properly for each function
+ next();
+});
 
 mongoose.connect('mongodb://localhost/giferent');
 

@@ -6,8 +6,8 @@ const Main = (props) => {
 
   return(
     <div>
-      <span>Hello, {username}!</span>
-      <GifCreator hello={true}/>
+      <span>Welcome back, {username}!</span>
+      
     </div>
   )
 
