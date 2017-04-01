@@ -4,15 +4,17 @@ body{
   background-size: cover;
   padding:0;
   margin:0;
+  text-align:center;
 }
 
 #root{
   position: relative;
   width: 55%;
-  height:400px;
+  height:1000px;
   margin-right:auto;
   margin-left:auto;
   background: #e8ebef;
+  border-radius: 10px;
 }
 
 .login_container{
@@ -53,21 +55,82 @@ body{
 }
 
 #GifCreator_container{
-  position:relative;
+  position:absolute;
   display:block;
-  width:30%;
-  height:20%;
-  background:palevioletred;
-  margin-right:auto;
-  margin-left:auto;
+  left:20%;
+  top: 25%;
+  overflow:auto;
+  font-family:sans-serif;
+  font-size:13px;
+  min-width:50%;
 }
 
-#gifCreator_container{
-  padding:20px;
-  background: mediumspringgreen;
+#GifCreator_gif_container{
+  position:absolute;
+  display:block;
+  min-width:40%;
+  overflow:auto;
+  left: 30%;
 }
 
 .GifCreator_inline{
   position:relative;
-  display:inline-block;
+  display:table;
+  width: 500px;
+  margin-right:auto;
+  margin-left:auto;
+}
+
+#GifImage{
+  position:relative;
+  display:block;
+  margin-right:auto;
+  margin-left:auto;
+}
+
+label{
+  margin-top:20px;
+}
+
+#giphy_container{
+  position:absolute;
+  display:block;
+  margin-top:70%;
+  background: deepskyblue;
+  border-radius: 10px;
+}
+
+.giphy{
+  position:relative;
+  overflow:hidden;
+}
+
+#giphy_container img:hover{
+  opacity:.5;
+  cursor: pointer;
+}
+
+.input_text{
+  position:relative;
+  width: 90%;
+  height: 50px;
+  font-size: 20px;
+  font-family:sans-serif;
+  border-radius: 10px;
+  text-align:center;
+  margin: 20px;
+}
+
+#giphy_search_button{
+  padding:20px;
+  font-size: 16px;
+}
+
+#nextButton{
+  position:absolute;
+  display: inline-block;
+  padding:20px;
+  font-size: 16px;
+  top: 78%;
+  left: 80%;
 }
