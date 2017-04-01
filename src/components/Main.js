@@ -12,7 +12,7 @@ class Main extends Component{
     this.onGoBackClick_BOUND = this.onGoBackClick.bind(this);
     this.onAudioSubmit_BOUND = this.onAudioSubmit.bind(this);
     
-    this.state = {title: '', url: '', gif_creation_state: "gif_selection", audio: ''};
+    this.state = {title: '', url: '', gif_creation_state: "gif_selection", audioURL: ''};
     //"gif_selection", "audio_creation", "display"
   }
 
@@ -24,7 +24,7 @@ class Main extends Component{
     this.setState({gif_creation_state: "gif_selection"});
   }
 
-  onAudioSubmit(url){
+  onAudioSubmit(url, audio){
     this.setState({gif_creation_state: "display", audio: url});
   }
 
@@ -44,7 +44,7 @@ class Main extends Component{
     }
     else{
       return(
-        <DisplayGif title={this.state.title} url={this.state.url} user={this.username} audio={this.state.audio}/>
+        <DisplayGif title={this.state.title} url={this.state.url} user={this.username} audioURL={this.state.audioURL}/>
       )
     }
   }

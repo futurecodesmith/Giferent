@@ -169,6 +169,10 @@ label{
   left: 80%;
 }
 
+#logo_gif_creator{
+  margin-top:10px;
+}
+
 #logo{
   position:relative;
   display:block;

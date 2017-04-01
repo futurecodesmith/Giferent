@@ -9,6 +9,8 @@ class AudioCreator extends Component{
   constructor(props){
     super(props);
 
+    this.audio;
+
     this.onGoBackClick = this.props.onGoBackClick;
     this.onAudioSubmit = this.props.onAudioSubmit;
 
@@ -58,15 +60,17 @@ class AudioCreator extends Component{
         id: Math.floor(Math.random()*90000) + 10000
       }
 
-      this.setState({ uploading: true });
       var url = URL.createObjectURL(this.state.recordVideo.blob);
-      var audio = new Audio();
-      audio.src = url;
-      audio.addEventListener('ended', function() {
+      this.setState({ audioURL: params.data, uploading: true });
+      console.log('State:', this.state.audioURL)
+      
+      this.audio = new Audio();
+      this.audio.src = url;
+      this.audio.addEventListener('ended', function() {
           this.currentTime = 0;
           this.play();
       }, false);
-      audio.play();
+      this.audio.play();
 
 
 
@@ -110,7 +114,7 @@ class AudioCreator extends Component{
 
         <div className="AudioCreator_element">
           <button className="giphy_search_button" onClick={this.onGoBackClick}>Go Back</button>
-          <button className="giphy_search_button" onClick={()=>{this.onAudioSubmit(this.state.audioURL)}}>Submit</button>
+          <button className="giphy_search_button" onClick={()=>{this.onAudioSubmit(this.state.audioURL, this.audio)}}>Submit</button>
         </div>
 
         <video autoPlay muted src={this.state.src} />

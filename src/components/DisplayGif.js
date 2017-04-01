@@ -1,14 +1,24 @@
 import React, { Component } from 'react';
+import { captureUserMedia, S3Upload } from './AppUtils';
+import Webcam from './Webcam.react';
+import RecordRTC from 'recordrtc';
+import { Modal } from 'react-bootstrap';
 
 class DisplayGif extends Component {
   constructor(props){
     super(props);
+    console.log("In DisplayGif:", this.props.audioURL);
+
   }
 
   componentDidMount(){
-    let audio= new Audio(this.props.audio);
-    audio.loop = true;
-    audio.play();
+    // const audio= new Audio(this.props.audioURL);
+    // audio.loop = true;
+    // audio.addEventListener('ended', function() {
+    //       this.currentTime = 0;
+    //       this.play();
+    //   }, false);
+    // audio.play();
   }
 
   render(){
