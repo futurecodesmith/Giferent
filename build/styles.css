@@ -1,7 +1,6 @@
 body{
-  background: #dddddd;
-  background-repeat: none;
-  background-size: cover;
+  background:  url('http://supremedba.co.uk/wp-content/uploads/2015/11/12224686_579568668858824_331907434_n.jpg');
+  background-repeat: repeat;
   padding:0;
   margin:0;
   text-align:center;
@@ -10,10 +9,28 @@ body{
 #root{
   position: relative;
   width: 55%;
-  height:1000px;
-  margin-right:auto;
+  height:100%;
+  margin-right: auto;
   margin-left:auto;
   border-radius: 10px;
+}
+
+.bg_panel{
+  position: relative;
+  display:block;
+  background:whitesmoke;
+  width: auto;
+  height: auto;
+  margin-right:auto;
+  margin-left:auto;
+  margin-top:10%;
+  border-radius:10px;
+  box-shadow: 10px 10px 20px black;
+  margin-bottom: 10px;
+}
+
+#bg_panel img{
+  margin-top:10px;
 }
 
 .login_container{
@@ -22,8 +39,8 @@ body{
   margin-right:auto;
   margin-left:auto;
   width: 45%;
-  height: 200px;
-  background:#e8ebef;
+  height: auto;
+  background:whitesmoke;
   margin-top:20%;
   border-radius: 5px;
   padding: 10px;
@@ -31,6 +48,7 @@ body{
   font-size: 13px;
   text-align:center;
   border-radius:10px;
+  box-shadow: 10px 10px 20px black;
 }
 
 #createAccount_container{
@@ -38,7 +56,6 @@ body{
   display:block;
   margin-right:auto;
   margin-left:auto;
-  background:mediumspringgreen;
   width:40%;
 }
 
@@ -53,20 +70,23 @@ body{
   width:50%;
   margin-top:5%;
   padding:10px;
+  font-size: 16px;
 }
 
 #login_text{
   font-family:sans-serif;
   color:#62b0f0;
-  font-size: 13px;
+  font-size: 20px;
   font-weight:bolder;
 }
 
 #GifCreator_container{
-  position:absolute;
+  position:relative;
   display:block;
-  left:20%;
-  top: 25%;
+  /*left:20%;
+  top: 25%;*/
+  margin-right:auto;
+  margin-left:auto;
   overflow:auto;
   font-family:sans-serif;
   font-size:13px;
@@ -74,11 +94,12 @@ body{
 }
 
 #GifCreator_gif_container{
-  position:absolute;
+  position:relative;
   display:block;
   min-width:40%;
   overflow:auto;
-  left: 30%;
+  margin-right:auto;
+  margin-left:auto;
 }
 
 .GifCreator_inline{
@@ -103,14 +124,18 @@ label{
 #giphy_container{
   position:absolute;
   display:block;
-  margin-top:70%;
-  background: deepskyblue;
+  background: #e8ebef;
   border-radius: 10px;
+  border-radius:10px;
+  box-shadow: 10px 10px 20px black;
 }
 
 .giphy{
   position:relative;
   overflow:hidden;
+  margin-top:10px;
+  height: 85%;
+  width: 85%;
 }
 
 #giphy_container img:hover{
@@ -129,9 +154,10 @@ label{
   margin: 20px;
 }
 
-#giphy_search_button{
+.giphy_search_button{
   padding:20px;
   font-size: 16px;
+  margin:10px;
 }
 
 #nextButton{
@@ -139,7 +165,7 @@ label{
   display: inline-block;
   padding:20px;
   font-size: 16px;
-  top: 78%;
+  top: 77%;
   left: 80%;
 }
 
@@ -164,8 +190,7 @@ h3{
 #AudioCreator_container{
   position:relative;
   display:block;
-  width:500px;
-  height:500px;
+  overflow:auto;
   margin-right:auto;
   margin-left:auto;
 }

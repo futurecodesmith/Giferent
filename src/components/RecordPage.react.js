@@ -1,31 +1,31 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { captureUserMedia, S3Upload } from './AppUtils';
 import Webcam from './Webcam.react';
 import RecordRTC from 'recordrtc';
 import { Modal } from 'react-bootstrap';
 
-class AudioCreator extends Component{
+const hasGetUserMedia = !!(navigator.getUserMedia || navigator.webkitGetUserMedia ||
+                        navigator.mozGetUserMedia || navigator.msGetUserMedia);
 
-  constructor(props){
+class RecordPage extends React.Component {
+  constructor(props) {
     super(props);
 
-    this.onGoBackClick = this.props.onGoBackClick;
-    this.onAudioSubmit = this.props.onAudioSubmit;
+    this.state = {
+      recordVideo: null,
+      src: null,
+      uploadSuccess: null,
+      uploading: false
+    };
 
+    this.requestUserMedia = this.requestUserMedia.bind(this);
     this.startRecord = this.startRecord.bind(this);
     this.stopRecord = this.stopRecord.bind(this);
-
-    this.state = {audioURL: '', 
-                  recordVideo: null,
-                  src: null,
-                  uploadSuccess: null,
-                  uploading: false
-    }
   }
 
   componentDidMount() {
     if(!hasGetUserMedia) {
-      //alert("Your browser cannot stream from your webcam. Please switch to Chrome or Firefox.");
+      alert("Your browser cannot stream from your webcam. Please switch to Chrome or Firefox.");
       return;
     }
     this.requestUserMedia();
@@ -83,43 +83,18 @@ class AudioCreator extends Component{
     });
   }
 
-  getAudioURL(event){
-    console.log(event.target.value);
-    this.setState({audioURL: event.target.value});
-  }
-
-  render(){
+  render() {
     return(
-      <div className="bg_panel">
-        <img src="http://i.imgur.com/LPLThPr.png"/>
-        <div id="GifCreator_gif_container">
-          {<img className="giphy" src={this.props.url} onLoad={this.updateImageHasLoaded_BOUND} onError={this.updateImageHasError_BOUND} />}
-        </div>
-
-        <h1>"{this.props.title}"</h1>
-        <h3>by {this.props.user}</h3>
-
-        <input type="text" placeholder="Enter an audio URL" className="input_text" onChange={this.getAudioURL.bind(this)}/>
-
-        <br/>
-
-        <button className="giphy_search_button" onClick={this.startRecord}>Start Recording</button>
-        <button className="giphy_search_button" onClick={this.stopRecord}>Stop Recording</button>
-
-        <br/>
-
-        <div className="AudioCreator_element">
-          <button className="giphy_search_button" onClick={this.onGoBackClick}>Go Back</button>
-          <button className="giphy_search_button" onClick={()=>{this.onAudioSubmit(this.state.audioURL)}}>Submit</button>
-        </div>
-
-        <video autoPlay muted src={this.state.src} />
+      <div>
+        <Modal show={this.state.uploadSuccess}><Modal.Body>Upload success!</Modal.Body></Modal>
+        {this.state.uploading ?
+          <div>Uploading...</div> : null}
+        <div><button onClick={this.startRecord}>Start Record</button></div>
+        <div><button onClick={this.stopRecord}>Stop Record</button></div>
       </div>
-
     )
-
   }
-
 }
 
-export default AudioCreator;
+export default RecordPage;
+

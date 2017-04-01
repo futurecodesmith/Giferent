@@ -74,24 +74,26 @@ class GifCreator extends Component {
       console.log("next button rendering..")
       nextButton.push(<button id="nextButton" type="button" onClick={() => {this.onNextButtonClick(title, url) }}>next</button>);
     }
-
+    
     return (
-      <div>
+      <div className="bg_panel">
+        <img src="http://i.imgur.com/LPLThPr.png"/>
         <div id="GifCreator_gif_container">
-          {<img className="giphy" src={this.state.gifURL} onLoad={this.updateImageHasLoaded_BOUND} onError={this.updateImageHasError_BOUND} />}
+          <img className="giphy" src={this.state.gifURL} onLoad={this.updateImageHasLoaded_BOUND} onError={this.updateImageHasError_BOUND} />
         </div>
-        <div id="GifCreator_container">
 
+        <div id="GifCreator_container">
           <div className="GifCreator_inline">
             <input className="input_text" placeholder="Enter a title for your giferent" type="text" value={this.state.title} onChange={this.titleHandler.bind(this)} />
 
             <br/>
 
             <input type="text" className="input_text" placeholder="Search for a GIF, or enter a url" value={this.state.gifURL} onChange={this.urlHandler.bind(this)} />
+
           </div>
           {nextButton}
           <br />
-          <button id="giphy_search_button" onClick={() => { this.getGiphy(this.state.gifURL) }}>Search</button>
+          <button className="giphy_search_button" onClick={() => { this.getGiphy(this.state.gifURL) }}>Search</button>
 
         </div>
         <div id="giphy_container">

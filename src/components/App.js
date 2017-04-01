@@ -72,8 +72,8 @@ class App extends Component {
         <Login loginError={this.loginError} clickLoginButton={this.clickLoginButton.bind(this)} clickCreateAccountButton={this.clickCreateAccountButton.bind(this)} />
       );
 
-    else if (this.state.page_state === "createAccount") return (<CreateAccount clickSubmit={this.createAccount.bind(this)} />)
-
+    else if (this.state.page_state === "createAccount") return (
+      <CreateAccount clickSubmit={this.createAccount.bind(this)} />)
     else if (this.state.page_state === "main") return (<Main username={this.state.username} />)
   }
 }
