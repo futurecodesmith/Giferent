@@ -37,6 +37,7 @@
     "axios": "^0.15.3",
     "body-parser": "^1.17.1",
     "cookie-parser": "^1.4.3",
+    "cors": "^2.8.3",
     "dom-find": "^0.3.5",
     "express": "^4.15.2",
     "fs": "0.0.1-security",
