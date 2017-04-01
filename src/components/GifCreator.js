@@ -1,10 +1,18 @@
 import React, { Component } from 'react';
+import Axios from 'axios';
 
 class GifCreator extends Component {
   constructor(props) {
     super(props)
 
-    this.state = { title: '', gifURL: '', sound: '' }
+    this.giphySetImage_BOUND = this.giphySetImage.bind(this);
+    this.updateImageHasLoaded_BOUND = this.updateImageHasLoaded.bind(this);
+    this.updateImageHasError_BOUND = this.updateImageHasError.bind(this);
+
+    this.gifs = [];
+    this.giphys = [];
+    this.state = { title: '', gifURL: '', sound: '', giphys: [], imageHasLoaded: false}
+
   }
 
   titleHandler(event) {
@@ -16,44 +24,77 @@ class GifCreator extends Component {
     this.setState({ gifURL: event.target.value })
   }
 
-  render() {
+  giphySetImage(url){
+    this.setState({gifURL: url});
+  }
 
-    let imageRender = [];
+  getGiphy(search) {
+    let searchTerms = search.split(' ')
+    this.imageObjects = [];
+    
+    var path = "http://api.giphy.com/v1/gifs/search?q="
 
-    function imageExists(url, callback) {
-      var img = new Image();
-      img.id = "preview_image";
-      img.onload = function () { callback(true); };
-      img.onerror = function () { callback(false); };
-      img.src = url
-    }
-
-    imageExists(this.state.gifURL, (exists) => {
-      if(exists) console.log("yes");
+    searchTerms.forEach(term => {
+      path = path + term + "+";
     })
 
+    path += "&limit=12&api_key=dc6zaTOxFJmzC";
+
+    $.get(path).then(res => {
+      res.data.forEach(item => {
+        var sourceImage = item.images.fixed_height.url;
+        this.imageObjects.push(<img onClick={()=>{this.giphySetImage_BOUND(sourceImage)}} src={item.images.fixed_height.url}/>)
+      })
+      this.setState({giphys: this.imageObjects});
+    })
+  }
+
+  updateImageHasLoaded(){
+    console.log('loaded');
+    this.setState({imageHasLoaded: true});
+  }
+
+  updateImageHasError(){
+    console.log('error loading image');
+    this.setState({imageHasLoaded: false});
+  }
+
+  render() {
+
+    //build an array that holds JSX element for 'next' button, that will only hold a value if the user has input a valid image and can move on to the next page.
+    let nextButton = [];
+    if(this.state.imageHasLoaded) {
+      console.log("next button rendering..")
+      nextButton.push(<button id="nextButton" type="button">next</button>);
+    }
+
     return (
+    <div>
+      <div id="GifCreator_gif_container">
+          {<img className="giphy" src={this.state.gifURL} onLoad={this.updateImageHasLoaded_BOUND} onError={this.updateImageHasError_BOUND}/>}
+        </div>
       <div id="GifCreator_container">
 
-        <div id="GifCreator_gif_container">
-          <img src={this.state.gifURL}/>
-        </div>
-
-        <span>Instructions go here!</span><br />
+        
 
         <div className="GifCreator_inline">
-          <label>Title:</label> <br />
-          <label>.gif URL:</label>
+          <input className="input_text" placeholder="Enter a title for your giferent" type="text" value={this.state.title} onChange={this.titleHandler.bind(this)} />
+
+          <br/>
+
+          <input type="text" className="input_text" placeholder="Search for a GIF, or enter a url" value={this.state.gifURL} onChange={this.urlHandler.bind(this)} />
         </div>
-
-        <div className="GifCreator_inline">
-          <input type="text" value={this.state.title} onChange={this.titleHandler.bind(this)} /> <br />
-          <input type="text" value={this.state.gifURL} onChange={this.urlHandler.bind(this)} />
-        </div>
-
-        <button>Preview .gif</button>
-
+        {nextButton}
+        <br/>
+        <button id="giphy_search_button" onClick={()=> {this.getGiphy(this.state.gifURL)}}>Search</button>
+        
       </div>
+      <div id="giphy_container">
+          {this.state.giphys}
+      </div>
+      
+
+    </div>
     )
   }
 

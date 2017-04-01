@@ -13,7 +13,7 @@ class App extends Component {
     //Login properties and methods
 
     this.state = {
-      page_state: "login",
+      page_state: "main",
       username: ''
       //this determines what page we want to load for the user.
       //"login", "createAccount", "main"
@@ -22,10 +22,6 @@ class App extends Component {
 
 
   }
-
-  ///////////////////////////////
-  //method binding for children//
-  ///////////////////////////////
 
   //login//
   clickLoginButton(user, pass) {
