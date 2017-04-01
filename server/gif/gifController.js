@@ -4,10 +4,14 @@ const gifController = {
 
     createGif(req, res) {
         console.log(req);
+        
+        //convert wav to binary (64 bit) Buffer to store in DB
+        let audioBuff = new Buffer(req.body.audio, 'base64');
+
         gif.create({
             title: req.body.title,
             gifURL: req.body.gifURL,
-            // sound: { type: Buffer, contentType: String, required: true },
+            audio: audioBuff,
             likeCount: req.body.likeCount,
             creator: req.body.creator,
             sendURL: req.body.sendURL,
