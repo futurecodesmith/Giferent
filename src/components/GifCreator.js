@@ -77,7 +77,9 @@ class GifCreator extends Component {
     
     return (
       <div className="bg_panel">
-        <img src="http://i.imgur.com/LPLThPr.png"/>
+        <div >
+          <img className="logo_gif_creator"src="http://i.imgur.com/LPLThPr.png"/>
+        </div>
         <div id="GifCreator_gif_container">
           <img className="giphy" src={this.state.gifURL} onLoad={this.updateImageHasLoaded_BOUND} onError={this.updateImageHasError_BOUND} />
         </div>

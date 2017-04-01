@@ -4,6 +4,7 @@ body{
   padding:0;
   margin:0;
   text-align:center;
+  min-width: 1000px;
 }
 
 #root{
@@ -27,6 +28,7 @@ body{
   border-radius:10px;
   box-shadow: 10px 10px 20px black;
   margin-bottom: 10px;
+  padding-bottom: 10px;
 }
 
 #bg_panel img{
@@ -169,10 +171,6 @@ label{
   left: 80%;
 }
 
-#logo_gif_creator{
-  margin-top:10px;
-}
-
 #logo{
   position:relative;
   display:block;
@@ -201,6 +199,23 @@ h3{
 
 .AudioCreator_element{
   position:relative;
-  display:inline-block;
+  display:block;
 
+}
+
+#login-butt {
+  position: relative;
+  left: 80%;
+  padding:20px;
+  font-size: 16px;
+  margin:10px
+}
+
+#create-account {
+  font-size: 30px;
+  color: deepskyblue;
+}
+
+.logo_gif_creator{
+ margin-top:10px;
 }

@@ -24,7 +24,7 @@ class DisplayGif extends Component {
   render(){
     return(
     <div className="bg_panel">
-        <img src="http://i.imgur.com/LPLThPr.png"/>
+        <img className="logo_gif_creator" src="http://i.imgur.com/LPLThPr.png"/>
         <div id="GifCreator_gif_container">
           {<img className="giphy" src={this.props.url} />}
         </div>

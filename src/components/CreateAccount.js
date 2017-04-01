@@ -33,26 +33,23 @@ class CreateAccount extends Component {
     return (
       <div className="login_container">
 
-        <span>Create an Account</span>
+        <span id="create-account">Create an Account</span>
 
         <div className="block" className="block">
-            <label style={{"display":"inline-block"}}>Username</label>
-            <input style={{"display":"inline-block"}} type="text" value={this.state.username} onChange={this.userNameHandler.bind(this)}/><br/>
+            <input style={{"display":"inline-block"}} type="text" className="input_text" placeholder="Username" value={this.state.username} onChange={this.userNameHandler.bind(this)}/><br/>
         </div>
 
         <div className="block" className="block">
-            <label style={{"display":"inline-block"}}>Password</label>
-            <input style={{"display":"inline-block"}} type="password" value={this.state.password} onChange={this.passwordHandler.bind(this)}/><br/>
+            <input style={{"display":"inline-block"}} type="password" className="input_text" placeholder="Password"value={this.state.password} onChange={this.passwordHandler.bind(this)}/><br/>
         </div>
 
         <div className="block" className="block">
-            <label style={{"display":"inline-block"}}>Verify Password</label>
-            <input style={{"display":"inline-block"}} type="password" value={this.state.verifyPassword} onChange={this.verifyPasswordHandler.bind(this)}/><br/>
+            <input style={{"display":"inline-block"}} type="password" className="input_text" placeholder="Verify Password" value={this.state.verifyPassword} onChange={this.verifyPasswordHandler.bind(this)}/><br/>
 
             {passwordError}
         </div>
 
-        <button type="button" onClick={() => {this.props.clickSubmit(this.state.username, this.state.password)}}>Submit</button>
+        <button type="button" id="login_button" onClick={() => {this.props.clickSubmit(this.state.username, this.state.password)}}>Submit</button>
       </div>
     );
   }

@@ -30,6 +30,7 @@ app.use(cookieParser());
 
 app.use(express.static(path.join(__dirname, '../build/')))
 
+app.get('/checkCookie', cookieController.isLoggedIn);
 
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '../src/index.html'))
