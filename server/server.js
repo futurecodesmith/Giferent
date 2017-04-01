@@ -26,7 +26,7 @@ mongoose.connection.once('open', () => console.log('connected to database'))
 app.use(bodyParser.json());
 app.use(cookieParser());
 
-app.use('/createUser', cookieController.setCookie);
+// app.use('/createUser', cookieController.setCookie);
 
 app.use(express.static(path.join(__dirname, '../build/')))
 
@@ -37,9 +37,7 @@ app.get('/', (req, res) => {
 
 app.post('/createUser', userController.createUser);
 
-app.post('/verifyUser', userController.verifyUser, (req, res) => {
-    res.send()
-});
+app.post('/verifyUser', userController.verifyUser);
 
 app.post('/createGif', gifController.createGif);
 

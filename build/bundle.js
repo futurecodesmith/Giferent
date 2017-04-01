@@ -59,7 +59,11 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
+<<<<<<< HEAD
 /******/ 	var hotCurrentHash = "b3af05370f0687712591"; // eslint-disable-line no-unused-vars
+=======
+/******/ 	var hotCurrentHash = "1239c93906fb728b1563"; // eslint-disable-line no-unused-vars
+>>>>>>> 0427948d3c0e94456b5663c93eea9128f97a1e2e
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotMainModule = true; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -11925,7 +11929,13 @@ var App = function (_Component) {
   }, {
     key: 'createAccount',
     value: function createAccount(user, pass) {
-
+      console.log(user, pass);
+      _axios2.default.post('/createUser', {
+        username: user,
+        password: pass
+      }).then(function (res) {
+        console.log('CREATE ACCOUNT SUCCESS RESULT', res);
+      });
       //send user and pass to server to check if they're correct
 
       //if so, set page_state to main
@@ -12058,7 +12068,7 @@ var CreateAccount = function (_Component) {
         _react2.default.createElement(
           'button',
           { type: 'button', onClick: function onClick() {
-              _this2.props.clickSubmit(_this2.state.username);
+              _this2.props.clickSubmit(_this2.state.username, _this2.state.password);
             } },
           'Submit'
         )
@@ -12259,7 +12269,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var inline = {
   "position": "relative",
   "display": "inline-block",
-  "margin-top": "5px"
+  "marginTop": "5px"
 };
 
 var Login = function (_Component) {
