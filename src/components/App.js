@@ -45,7 +45,14 @@ class App extends Component {
   }
 
   createAccount(user, pass) {
-
+    console.log(user, pass);
+    Axios.post('/createUser', {
+      username: user,
+      password: pass,
+      // created: Date.now()
+    }).then((res) => {
+      console.log('CREATE ACCOUNT SUCCESS RESULT', res);
+    })
     //send user and pass to server to check if they're correct
 
     //if so, set page_state to main

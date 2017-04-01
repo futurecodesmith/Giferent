@@ -52,7 +52,7 @@ class CreateAccount extends Component {
             {passwordError}
         </div>
 
-        <button type="button" onClick={() => {this.props.clickSubmit(this.state.username)}}>Submit</button>
+        <button type="button" onClick={() => {this.props.clickSubmit(this.state.username, this.state.password)}}>Submit</button>
       </div>
     );
   }
