@@ -35,9 +35,9 @@ class App extends Component {
     }).then(res => {
       console.log(res.data);
       canLogin = res.data;
-      if(canLogin) this.setState({page_state: "main", username: user});
+      if (canLogin) this.setState({ page_state: "main", username: user });
       else {
-        this.loginError.push(<span style={{"color":"red"}}>Incorrect username/password</span>);
+        this.loginError.push(<span style={{ "color": "red" }}>Incorrect username/password</span>);
         this.setState(this.state);
       }
     })
@@ -64,6 +64,22 @@ class App extends Component {
 
   }
 
+  //JORDAN'S CHANGES
+
+  clickLogOut () {
+    this.setState({page_state: 'login'})
+  }
+
+  componentWillMount() {
+    Axios.get('/checkCookie')
+    .then((res) => {
+
+      if(res.data === true) {
+        this.setState({page_state:'main'});
+      }
+      console.log('COOKIE GET RESULT FROM APP JS', res);
+    })
+  }
   render() {
 
     //if page_state is set to login, render Login component
@@ -72,9 +88,9 @@ class App extends Component {
         <Login loginError={this.loginError} clickLoginButton={this.clickLoginButton.bind(this)} clickCreateAccountButton={this.clickCreateAccountButton.bind(this)} />
       );
 
-    else if (this.state.page_state === "createAccount") return (<CreateAccount clickSubmit={this.createAccount.bind(this)} />)
-
-    else if (this.state.page_state === "main") return (<Main username={this.state.username} />)
+    else if (this.state.page_state === "createAccount") return (
+      <CreateAccount clickSubmit={this.createAccount.bind(this)} />)
+    else if (this.state.page_state === "main") return (<Main username={this.state.username} clickLogOut={this.clickLogOut.bind(this)}/>)
   }
 }
 

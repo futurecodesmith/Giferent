@@ -31,16 +31,14 @@ class Login extends Component {
     return(
       <div className="login_container">
 
-        <h4 id="login_text" >LOGIN</h4>
+        <img src="http://i.imgur.com/LPLThPr.png"/>
 
         <div id="username_container" className="block">
-          <span style={inline}>Username</span>
-          <input type="text" placeholder="Username" style={inline} onChange={this.usernameHandler.bind(this)}/>
+          <input type="text" placeholder="Username" placeholder="Username" className="input_text" style={inline} onChange={this.usernameHandler.bind(this)}/>
         </div>
 
         <div id="password_container" className="block">
-          <span style={inline}>Password</span>
-          <input type="password" placeholder="Password" style={inline} onChange={this.passwordHandler.bind(this)}/>
+          <input type="password" placeholder="Password" placeholder="Password" className="input_text" style={inline} onChange={this.passwordHandler.bind(this)}/>
         </div>
 
         {this.props.loginError}
