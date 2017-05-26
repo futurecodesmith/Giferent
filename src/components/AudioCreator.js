@@ -46,10 +46,6 @@ class AudioCreator extends Component{
       this.state.recordVideo = RecordRTC(stream, { type: 'video' });
       this.state.recordVideo.startRecording();
     });
-
-    // setTimeout(() => {
-    //   this.stopRecord();
-    // }, 4000);
   }
 
   stopRecord() {
